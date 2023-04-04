@@ -1,3 +1,6 @@
+const PHOTOS_COUNT = 25;
+const NAMES = ['Дима', 'Олежа', 'Дементий', 'Егор', 'Эдик'];
+const DESCRIPTIONS = Array.from({length: PHOTOS_COUNT}, (_, i) => `Описание ${i}`);
 const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -7,7 +10,6 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
 const COMMENT_IDS = [];
-
 
 const isCorrectLength = (str, maxLength) => str.length <= maxLength;
 
@@ -23,7 +25,6 @@ function getRandomInt(from, to) {
   if (from === to) {
     return from;
   }
-  if (from > to){
   if (from > to) {
     [from, to] = [to, from];
   }
@@ -31,7 +32,6 @@ function getRandomInt(from, to) {
   return Math.round(Math.random() * (to - from) + from);
 }
 
-const isCorrectLength = (str, maxLength) => str.length <= maxLength;
 const getId = (() => {
   let id = 1;
   return () => id++;
@@ -69,23 +69,7 @@ function generateDescription() {
     comments: comments
   };
 }
+import {generateDescription, PHOTOS_COUNT} from './data';
+import {isCorrectLength} from './util';
 
 const descriptions = Array.from({length: PHOTOS_COUNT}, generateDescription);
-
-isCorrectLength(descriptions, PHOTOS_COUNT); // Чтобы eslint не ругался
-
-export {getRandomInt, isCorrectLength}; // для того чтобы линтер не ругался
-=======
-function sum(num1, num2) {
-  return num1 + num2;
-}
-
-
-console.log(sum(5, 7))
-
-
-function stringLength(str) {
-  return str.length;
-}
-
-console.log(stringLength("Hello, world!"));
